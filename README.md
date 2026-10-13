@@ -4,9 +4,16 @@
 
 *A scriptorium was the room where a monastery's scribes copied books.*
 
-`translate-book-zh` is a [Claude Code](https://claude.com/claude-code) skill that translates a whole English book — a PDF of several hundred pages, scanned or with a text layer — into a Simplified Chinese edition, with the notes linked and the names consistent from the first chapter to the last.
+`translate-book-zh` is a [Claude Code](https://claude.com/claude-code) skill that turns a whole English book — a PDF of several hundred pages, scanned or with a text layer — into a Simplified Chinese edition that reads like a high-quality published translation, for about **US $1** in API fees.
 
-You give Claude the PDF. It reads the book's layout, writes a short description of the book and how it should sound in Chinese, fixes the Chinese for every recurring name, translates one chapter for you to read, then the rest, and builds the edition as HTML, PDF, Word and Markdown. With DeepSeek's cheapest model a 200,000-word book costs about **US $1** in API fees.
+- **Quality.** Each book gets its own style guide — genre, register, a reference translation to aim for, naming tradition — with a worked example from its own pages, sent with every request. The prompts are written against translationese.
+- **Low cost.** About $1 for a 200,000-word book on DeepSeek's cheapest model. One chapter is translated and read first, the cost is estimated before the full run, and finished work is never paid for twice.
+- **Consistency.** Every recurring name and term is fixed in a glossary before translation starts, so chapter 150 uses the same Chinese as chapter 1. A later volume inherits it.
+- **Nothing dropped.** Every chunk is checked for missing paragraphs, missing note markers and Chinese that is too short for its English, and retried — first whole, then paragraph by paragraph. Anything still wrong is listed for you.
+- **Review.** An optional second pass sends each draft with its English to an editor prompt that fixes omissions, mistranslations and glossary slips, changing as little as possible.
+- **The whole book.** Scans are OCR'd locally; chapters, italics and notes are kept; the notes stay linked. Out come HTML, PDF, Word and Markdown.
+
+You give Claude the PDF. It works out the layout, writes the style guide and the glossary for you to approve, translates chapter 1 for you to read, then the rest.
 
 <p align="center">
   <img src="docs/html-desktop.png" width="720" alt="The HTML edition: table of contents on the left, the translated chapter on the right">
