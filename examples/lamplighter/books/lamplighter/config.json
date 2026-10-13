@@ -1,0 +1,20 @@
+{
+ "title": "The Lamplighter's Almanac",
+ "pdf": "pdf/lamplighter.pdf",
+ "source": "text",
+ "body_pages": [
+  4,
+  9
+ ],
+ "notes_pages": [
+  10,
+  10
+ ],
+ "chapter_size": 13.5,
+ "note_size": 7.0,
+ "note_superscript": true,
+ "indent_min": 8,
+ "head_max": 0.07,
+ "foot_min": 0.93,
+ "first_section_title": "The Lamplighter's Almanac"
+}

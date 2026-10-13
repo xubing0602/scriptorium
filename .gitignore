@@ -1,0 +1,15 @@
+# secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# translation projects created inside the repo by mistake
+/books/
+/pdf/
+/work/
+/out/
+
+.DS_Store

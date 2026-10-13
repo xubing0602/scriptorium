@@ -1,0 +1,16 @@
+# core
+anthropic>=1.0
+openai>=1.0
+pymupdf>=1.23
+python-dotenv
+regex
+
+# scanned books (ocr.py) — macOS only: Apple Vision via ocrmac
+ocrmac; sys_platform == "darwin"
+pillow
+numpy
+
+# optional outputs: PDF (build.py prints the HTML with Chromium) and a
+# Word style template with Chinese fonts; DOCX itself also needs pandoc
+playwright
+python-docx

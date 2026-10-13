@@ -1,0 +1,84 @@
+{
+ "Tobias": {
+  "zh": "托拜厄斯",
+  "type": "name",
+  "of": "Tobias Wren"
+ },
+ "Port Kessel": {
+  "zh": "凯塞尔港",
+  "type": "place"
+ },
+ "Rope Street": {
+  "zh": "绳索街",
+  "type": "place"
+ },
+ "the turning": {
+  "zh": "“转折”",
+  "type": "term",
+  "note": "原文以斜体标示为托拜厄斯的用词，中文用引号"
+ },
+ "saudade": {
+  "zh": "saudade",
+  "type": "term",
+  "note": "葡萄牙语词，保留原文不译不加注，正文随后即作解释"
+ },
+ "fog": {
+  "zh": "雾。",
+  "type": "term",
+  "note": "历书中所写的字，译文用全角冒号加引号标出",
+  "skip": true
+ },
+ "margaret ellen": {
+  "zh": "玛格丽特·埃伦号",
+  "type": "text",
+  "note": "船名，原文斜体"
+ },
+ "clear": {
+  "zh": "“晴明”",
+  "type": "term",
+  "note": "历书中所写的全大写词，指防波堤上能看见每一盏灯的夜晚；正文与注6一致"
+ },
+ "Tobias Wren": {
+  "zh": "托拜厄斯·雷恩",
+  "type": "name"
+ },
+ "Absalom Pryce": {
+  "zh": "阿布萨隆·普赖斯",
+  "type": "name"
+ },
+ "Skerra": {
+  "zh": "斯凯拉岛",
+  "type": "place",
+  "note": "岛名；'the island of Skerra' 译作 斯凯拉岛，不重复“岛”"
+ },
+ "Kessel Town Library": {
+  "zh": "凯塞尔镇图书馆",
+  "type": "place"
+ },
+ "Daniel Hesketh": {
+  "zh": "丹尼尔·赫斯基思",
+  "type": "name"
+ },
+ "Owen Marr": {
+  "zh": "欧文·马尔",
+  "type": "name"
+ },
+ "almanac": {
+  "zh": "历书",
+  "type": "term",
+  "note": "全书一律译“历书”"
+ },
+ "harbour board": {
+  "zh": "港务局",
+  "type": "term"
+ },
+ "pilot's office": {
+  "zh": "引航站",
+  "type": "place"
+ },
+ "the bar": {
+  "zh": "沙洲",
+  "type": "term",
+  "note": "港口入口处的沙洲；'cross the bar / tried the bar' = 越过沙洲"
+ }
+}
