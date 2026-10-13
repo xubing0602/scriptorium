@@ -1,8 +1,10 @@
-# book-translation
+# scriptorium
 
 [English](README.md) · **简体中文**
 
-一个 [Claude Code](https://claude.com/claude-code) 技能（skill），把整本英文书——几百页的 PDF，扫描版或带文字层的都可以——译成简体中文版，注释保持链接，人名从第一章到最后一章保持一致。
+*Scriptorium：中世纪修道院里抄写书籍的缮写室。*
+
+`translate-book-zh` 是一个 [Claude Code](https://claude.com/claude-code) 技能（skill），把整本英文书——几百页的 PDF，扫描版或带文字层的都可以——译成简体中文版，注释保持链接，人名从第一章到最后一章保持一致。
 
 把 PDF 交给 Claude 即可。它会读懂这本书的版式，写一段关于这本书和中文该怎么译的说明，为所有反复出现的人名和术语定下译名，先译一章给你看，再译完全书，最后生成 HTML、PDF、Word 和 Markdown 四种格式。用 DeepSeek 最便宜的模型，一本 20 万词的书 API 费用约 **1 美元**。
 
@@ -72,10 +74,10 @@ flowchart LR
 需要：Claude Code、Python 3.9+、DeepSeek 或 Anthropic 的 API key。扫描版 PDF 还需要 macOS（OCR 通过 [`ocrmac`](https://github.com/straussmaximilian/ocrmac) 调用 Apple Vision，本地运行，免费）。
 
 ```bash
-git clone https://github.com/xubing0602/book-translation-skill.git
+git clone https://github.com/xubing0602/scriptorium.git
 mkdir -p ~/.claude/skills
-ln -s "$PWD/book-translation-skill/book-translation" ~/.claude/skills/book-translation
-pip install -r book-translation-skill/book-translation/scripts/requirements.txt
+ln -s "$PWD/scriptorium/translate-book-zh" ~/.claude/skills/translate-book-zh
+pip install -r scriptorium/translate-book-zh/scripts/requirements.txt
 
 # 可选：PDF 和 Word 输出
 python -m playwright install chromium
@@ -86,7 +88,7 @@ brew install pandoc          # 或 apt install pandoc / choco install pandoc
 
 ## 使用
 
-在一个空文件夹里打开 Claude Code，直接说：
+在一个空文件夹里打开 Claude Code，输入 `/translate-book-zh`，或者直接说：
 
 > 帮我把这本扫描版的书翻成中文：`~/books/history-of-tea.pdf`
 
@@ -129,7 +131,7 @@ Claude 会建好项目，请你把 API key 粘贴进 `.env`（它自己不碰 ke
 流水线是普通的 Python；Claude 负责的是写 `config.json` 和 `style.md`、判断检查结果、修正发现的问题。这些你也可以自己做。在项目文件夹里：
 
 ```bash
-S=~/.claude/skills/book-translation/scripts
+S=~/.claude/skills/translate-book-zh/scripts
 python $S/inspect_pdf.py pdf/book.pdf                 # 文字版还是扫描版？字号、页眉
 python $S/ocr.py --book book                          # 仅扫描版
 python $S/extract.py --book book && python $S/check.py --book book
@@ -140,11 +142,11 @@ python $S/build.py --book book
 python $S/check.py --book book --output
 ```
 
-每个脚本的全部参数都写在文件开头，也可以 `--help` 查看。配置项见 [`references/config-text.md`](book-translation/references/config-text.md) 和 [`references/config-scan.md`](book-translation/references/config-scan.md)；`style.md` 的写法见 [`references/style-guide.md`](book-translation/references/style-guide.md)。
+每个脚本的全部参数都写在文件开头，也可以 `--help` 查看。配置项见 [`references/config-text.md`](translate-book-zh/references/config-text.md) 和 [`references/config-scan.md`](translate-book-zh/references/config-scan.md)；`style.md` 的写法见 [`references/style-guide.md`](translate-book-zh/references/style-guide.md)。
 
 ## 配置
 
-项目文件夹里的 `.env`（模板：[`assets/env.example`](book-translation/assets/env.example)）：
+项目文件夹里的 `.env`（模板：[`assets/env.example`](translate-book-zh/assets/env.example)）：
 
 | 变量 | 默认值 | 含义 |
 |---|---|---|
@@ -161,7 +163,7 @@ python $S/check.py --book book --output
 ## 仓库结构
 
 ```
-book-translation/            技能本体——放进 ~/.claude/skills/ 的就是这个文件夹
+translate-book-zh/           技能本体——放进 ~/.claude/skills/ 的就是这个文件夹
   SKILL.md                   Claude 遵循的工作流程
   scripts/                   流水线（inspect、ocr、extract、check、glossary、translate、build）
   prompts/                   翻译、术语表、审校提示词

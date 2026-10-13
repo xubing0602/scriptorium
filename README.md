@@ -1,8 +1,10 @@
-# book-translation
+# scriptorium
 
 **English** · [简体中文](README.zh-CN.md)
 
-A [Claude Code](https://claude.com/claude-code) skill that translates a whole English book — a PDF of several hundred pages, scanned or with a text layer — into a Simplified Chinese edition, with the notes linked and the names consistent from the first chapter to the last.
+*A scriptorium was the room where a monastery's scribes copied books.*
+
+`translate-book-zh` is a [Claude Code](https://claude.com/claude-code) skill that translates a whole English book — a PDF of several hundred pages, scanned or with a text layer — into a Simplified Chinese edition, with the notes linked and the names consistent from the first chapter to the last.
 
 You give Claude the PDF. It reads the book's layout, writes a short description of the book and how it should sound in Chinese, fixes the Chinese for every recurring name, translates one chapter for you to read, then the rest, and builds the edition as HTML, PDF, Word and Markdown. With DeepSeek's cheapest model a 200,000-word book costs about **US $1** in API fees.
 
@@ -72,10 +74,10 @@ An optional second pass (`--review`) sends each chunk and its draft to an editor
 Requirements: Claude Code, Python 3.9+, an API key for DeepSeek or Anthropic. Scanned PDFs additionally need macOS (OCR uses Apple Vision through [`ocrmac`](https://github.com/straussmaximilian/ocrmac), locally and for free).
 
 ```bash
-git clone https://github.com/xubing0602/book-translation-skill.git
+git clone https://github.com/xubing0602/scriptorium.git
 mkdir -p ~/.claude/skills
-ln -s "$PWD/book-translation-skill/book-translation" ~/.claude/skills/book-translation
-pip install -r book-translation-skill/book-translation/scripts/requirements.txt
+ln -s "$PWD/scriptorium/translate-book-zh" ~/.claude/skills/translate-book-zh
+pip install -r scriptorium/translate-book-zh/scripts/requirements.txt
 
 # optional: PDF and Word output
 python -m playwright install chromium
@@ -86,7 +88,7 @@ To make the skill available in one project only, put it in that project's `.clau
 
 ## Use
 
-Open Claude Code in an empty folder and ask:
+Open Claude Code in an empty folder and type `/translate-book-zh`, or just ask:
 
 > Translate `~/Downloads/middlemarch.pdf` into Chinese.
 
@@ -129,7 +131,7 @@ Prices are per-token list prices at the time of writing; `translate.py --dry-run
 The pipeline is plain Python; Claude's part is writing `config.json` and `style.md`, judging the checks, and fixing what they find. You can do that yourself. From a project folder:
 
 ```bash
-S=~/.claude/skills/book-translation/scripts
+S=~/.claude/skills/translate-book-zh/scripts
 python $S/inspect_pdf.py pdf/book.pdf                 # text or scan? type sizes, running heads
 python $S/ocr.py --book book                          # scans only
 python $S/extract.py --book book && python $S/check.py --book book
@@ -140,11 +142,11 @@ python $S/build.py --book book
 python $S/check.py --book book --output
 ```
 
-Every script lists all its arguments at the top of the file and in `--help`. The config keys are documented in [`references/config-text.md`](book-translation/references/config-text.md) and [`references/config-scan.md`](book-translation/references/config-scan.md); how to write `style.md` in [`references/style-guide.md`](book-translation/references/style-guide.md).
+Every script lists all its arguments at the top of the file and in `--help`. The config keys are documented in [`references/config-text.md`](translate-book-zh/references/config-text.md) and [`references/config-scan.md`](translate-book-zh/references/config-scan.md); how to write `style.md` in [`references/style-guide.md`](translate-book-zh/references/style-guide.md).
 
 ## Configuration
 
-`.env` in the project folder (template: [`assets/env.example`](book-translation/assets/env.example)):
+`.env` in the project folder (template: [`assets/env.example`](translate-book-zh/assets/env.example)):
 
 | Variable | Default | Meaning |
 |---|---|---|
@@ -161,7 +163,7 @@ Per-book files live in `books/<book>/`: `config.json` (how to read the PDF), `st
 ## Repository layout
 
 ```
-book-translation/            the skill — this folder is what goes in ~/.claude/skills/
+translate-book-zh/           the skill — this folder is what goes in ~/.claude/skills/
   SKILL.md                   the workflow Claude follows
   scripts/                   the pipeline (inspect, ocr, extract, check, glossary, translate, build)
   prompts/                   translation, glossary and review prompts

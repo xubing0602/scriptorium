@@ -1,4 +1,4 @@
-"""Generate the two sample books used to test the book-translation skill.
+"""Generate the two sample books used to test the translate-book-zh skill.
 
   lamplighter.pdf   text layer: title page, contents, 3 chapters, endnotes
   ferryman_scan.pdf image-only scan: 2 chapters, footnotes under a printed rule
